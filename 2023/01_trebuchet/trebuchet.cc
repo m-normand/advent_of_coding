@@ -5,11 +5,22 @@
 
 const std::string kINPUT_FILE = "input.txt"; 
 
+/** @brief Reads a line of text and returns a 2 digit integer
+ *
+ * Integer composes of the first and last numerical chars in line
+ *
+ * @param line read line from the puzzle
+ * @returns 2 digit integer
+*/
 int encode_line(const std::string &line)
 {
     std::string::const_iterator front_iter = line.cbegin();
     std::string::const_iterator back_iter = line.cend();
 
+    // Loop through line from front and back.
+    // Move iterators until an digit is found or
+    // iterators equate each other.
+    /* NOTE: Prompt assumes that there is at least ONE number */
     while(
         !(std::isdigit(*front_iter) && std::isdigit(*back_iter))
         && front_iter != back_iter)
@@ -24,6 +35,7 @@ int encode_line(const std::string &line)
             back_iter--;
         }
     }
+    // Converts two chars into a two digit number
     return std::stoi(std::string({*front_iter, *back_iter}));
 }
 
