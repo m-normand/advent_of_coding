@@ -1,9 +1,21 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <vector>
+#include <map>
 
-const std::string kINPUT_FILE = "test_input.txt"; 
+const std::string kINPUT_FILE = "test_input2.txt";
+
+const std::map<std::string, char> kALPHA_NUMS{
+    {"one",'1'},
+    {"two",'2'},
+    {"three",'3'},
+    {"four",'4'},
+    {"five",'5'},
+    {"six",'6'},
+    {"seven",'7'},
+    {"eight",'8'},
+    {"nine",'9'}};
+
 
 /** @brief Reads a line of text and returns a 2 digit integer
  *
