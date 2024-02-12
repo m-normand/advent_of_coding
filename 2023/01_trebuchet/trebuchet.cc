@@ -3,7 +3,7 @@
 #include <string>
 #include <map>
 
-const std::string kINPUT_FILE = "test_input2.txt";
+const std::string kINPUT_FILE = "input.txt";
 
 const std::map<std::string, char> kALPHA_NUMS{
     {"one",'1'},
@@ -96,7 +96,6 @@ int main(int argc, char **argv)
 
     std::string puzzle_line;
     int puzzle_sum = 0;
-    int calibration;
     while(std::getline(input_file, puzzle_line))
     {
         // puzzle_sum += encode_line_old(puzzle_line);
