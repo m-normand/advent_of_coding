@@ -51,6 +51,40 @@ int encode_line_old(const std::string &line)
     return std::stoi(std::string({*front_iter, *back_iter}));
 }
 
+char first_num_in_str(const std::string& line,size_t idx)
+{
+    if (std::isdigit(line.at(idx)))
+    {
+        return line.at(idx);
+    }
+    std::string substring = line.substr(0,idx+1);
+    for (const auto& [alpha_num, num_char]: kALPHA_NUMS)
+    {
+        if(substring.find(alpha_num)!=std::string::npos)
+        {
+            return num_char;
+        }
+    }
+    return first_num_in_str(line, idx + 1);
+}
+
+char last_num_in_str(const std::string& line,size_t idx)
+{
+    if (std::isdigit(line.at(idx)))
+    {
+        return line.at(idx);
+    }
+    std::string substring = line.substr(idx);
+    for (const auto& [alpha_num, num_char]: kALPHA_NUMS)
+    {
+        if(substring.find(alpha_num)!=std::string::npos)
+        {
+            return num_char;
+        }
+    }
+    return last_num_in_str(line, idx - 1);
+}
+
 int main(int argc, char **argv) 
 {
     std::ifstream input_file(kINPUT_FILE);
@@ -62,9 +96,13 @@ int main(int argc, char **argv)
 
     std::string puzzle_line;
     int puzzle_sum = 0;
+    int calibration;
     while(std::getline(input_file, puzzle_line))
     {
-        puzzle_sum += encode_line_old(puzzle_line);
+        // puzzle_sum += encode_line_old(puzzle_line);
+        puzzle_sum += std::stoi(std::string({
+            first_num_in_str(puzzle_line, 0),
+            last_num_in_str(puzzle_line, puzzle_line.length()-1)}));
     }
     std::cout << "Cablibration value -> " << puzzle_sum << std::endl;
     return 1;
