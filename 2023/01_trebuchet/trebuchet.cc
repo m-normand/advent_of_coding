@@ -3,7 +3,7 @@
 #include <string>
 #include <map>
 
-const std::string kINPUT_FILE = "input.txt";
+const std::string kINPUT_FILE = "01_trebuchet/input.txt";
 
 const std::map<std::string, char> kALPHA_NUMS{
     {"one",'1'},
