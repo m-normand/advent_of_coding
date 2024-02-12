@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-const std::string kINPUT_FILE = "input.txt"; 
+const std::string kINPUT_FILE = "test_input.txt"; 
 
 /** @brief Reads a line of text and returns a 2 digit integer
  *
@@ -12,7 +12,7 @@ const std::string kINPUT_FILE = "input.txt";
  * @param line read line from the puzzle
  * @returns 2 digit integer
 */
-int encode_line(const std::string &line)
+int encode_line_old(const std::string &line)
 {
     std::string::const_iterator front_iter = line.cbegin();
     std::string::const_iterator back_iter = line.cend();
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     int puzzle_sum = 0;
     while(std::getline(input_file, puzzle_line))
     {
-        puzzle_sum += encode_line(puzzle_line);
+        puzzle_sum += encode_line_old(puzzle_line);
     }
     std::cout << "Cablibration value -> " << puzzle_sum << std::endl;
     return 1;
